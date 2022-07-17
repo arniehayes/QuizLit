@@ -1,18 +1,18 @@
 import React from "react";
 
 export interface API {
-    category: string
-    id: string
-    correctAnswer: string
-    incorrectAnswers: string[]
-    question: string
-    tags: string[]
-    difficulty: string
-
+    category?: string
+    id?: string
+    correctAnswer?: string
+    incorrectAnswers?: string[]
+    question?: string
+    tags?: string[]
+    type?: string
+    difficulty?: string
 }
 
 
-const About = ({apiCall}: API) => {
+const About = ({apiCall}: API[]) => {
     return (
         <div>
             {apiCall}
@@ -23,7 +23,7 @@ const About = ({apiCall}: API) => {
 export default About;
 
 export const getStaticProps = async () => {
-    const apiCall: API = await fetch(
+    const apiCall: API[] = await fetch(
         "https://the-trivia-api.com/api/questions?categories=arts_and_literature&limit=20&difficulty=easy"
     ).then((response) => response.json());
     console.log(apiCall);
