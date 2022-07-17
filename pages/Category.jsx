@@ -1,6 +1,7 @@
+import Link from "next/link";
 import React, { useState } from "react";
 
-const StartGame = () => {
+const Category = () => {
   const categoryList = [
     "Arts & Literature",
     "Film & TV",
@@ -18,13 +19,15 @@ const StartGame = () => {
     <div>
       <h1>Categories: </h1>
       {categoryList.map((category) => (
-        <button type="submit" id={category}>
-          {category}
-        </button>
+        <Link href={"/Question"}>
+          <button type="submit" id={category}>
+            {category}
+          </button>
+        </Link>
       ))}
     </div>
   );
 };
 
-export default StartGame;
+export default Category;
 

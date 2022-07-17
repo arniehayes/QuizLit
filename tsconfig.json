@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["pages/StartGame.jsx", "pages/index.jsx"],
+  "include": ["pages/Category.jsx", "pages/index.jsx"],
   "exclude": ["node_modules"]
 }

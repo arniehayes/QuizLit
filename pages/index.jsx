@@ -1,13 +1,14 @@
+import Link from "next/link"
 
 const Home = () => {
 
   return (
     <div>
-      <button>
-        Start New Game!
-      </button>
+      <Link href="/Categories">
+        <button>Start New Game!</button>
+      </Link>
     </div>
-  )
+  );
 }
 
 export default Home
