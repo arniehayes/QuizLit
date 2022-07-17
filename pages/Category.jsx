@@ -2,6 +2,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 const Category = () => {
+
+  const [category, setCategory] = useState("");
+
   const categoryList = [
     "Arts & Literature",
     "Film & TV",
@@ -18,10 +21,10 @@ const Category = () => {
   return (
     <div>
       <h1>Categories: </h1>
-      {categoryList.map((category) => (
-        <Link href={"/Question"}>
-          <button type="submit" id={category}>
-            {category}
+      {categoryList.map((data) => (
+        <Link href={`/Categories/${category}`}>
+          <button type="submit" id={data} onClick={() => setCategory(data)}>
+            {data}
           </button>
         </Link>
       ))}
