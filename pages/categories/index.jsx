@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import style from "../../styles/component/categories.module.scss";
+import cc from "classcat";
 
 const Category = () => {
   const categoryList = [
@@ -16,11 +18,13 @@ const Category = () => {
   ];
 
   return (
-    <div>
-      <h1>Categories: </h1>
+    <div className={cc([style.pageContainer])}>
+      <div className={cc([style.titleContainer])}>
+        <h1 className={cc([style.title])}> Categories: </h1>
+      </div>
       {categoryList.map((category) => (
         <Link key={category.link} href={`/categories/${category.link}`}>
-          <a id={category.link}>{category.label}</a>
+          <a className={cc([style.anchor])} id={category.link}>{category.label}</a>
         </Link>
       ))}
     </div>
