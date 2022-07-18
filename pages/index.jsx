@@ -4,8 +4,8 @@ const Home = () => {
 
   return (
     <div>
-      <Link href="/Category">
-        <button>Start New Game!</button>
+      <Link href="/Categories">
+        <a>Start New Game!</a>
       </Link>
     </div>
   );
