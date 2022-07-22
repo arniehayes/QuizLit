@@ -18,15 +18,21 @@ const Category = () => {
   ];
 
   return (
-    <div className={cc([style.pageContainer])}>
-      <div className={cc([style.titleContainer])}>
-        <h1 className={cc([style.title])}> Categories: </h1>
+    <div className={style.pageContainer}>
+      <div className={style.contentContainer}>
+        <div className={style.titleContainer}>
+          <h1 className={style.title}> Categories </h1>
+        </div>
+        <div className={style.categoryContainer}>
+          {categoryList.map((category) => (
+            <Link key={category.link} href={`/categories/${category.link}`}>
+              <a className={style.anchor} id={category.link}>
+                {category.label}
+              </a>
+            </Link>
+          ))}
+        </div>
       </div>
-      {categoryList.map((category) => (
-        <Link key={category.link} href={`/categories/${category.link}`}>
-          <a className={cc([style.anchor])} id={category.link}>{category.label}</a>
-        </Link>
-      ))}
     </div>
   );
 };

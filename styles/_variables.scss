@@ -3,3 +3,19 @@
     justify-content: center;
     align-items: center;
 }
+
+@mixin flexStart {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@mixin heroFont {
+    font-family: 'Rampart One', cursive;
+}
+
+$fontSmall: 15px;
+$fontMedium: 25px;
+$fontMediumLarge: 30px;
+$fontLarge: 50px;
+$fontXL: 70px;

@@ -20,7 +20,9 @@
 .title {
     padding: 0;
     margin: 0;
-    font-size: 60px;
+    @include heroFont();
+    color: rgb(140, 79, 255);
+    font-size: $fontXL;
 }
 
 .anchorContainer {
@@ -28,8 +30,11 @@
 }
 
 .anchor {
-    font-size: 30px;
-    background-color: aqua;
+    @include heroFont();
+    font-weight: bold;
+    font-size: $fontMediumLarge;
+    color: rgb(85, 118, 228);
+    background-color: rgb(129, 216, 111);
     border-radius: 15px;
     padding: 10px;
 }
