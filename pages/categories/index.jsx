@@ -2,10 +2,15 @@ import Link from "next/link";
 import React from "react";
 import style from "../../styles/component/categories.module.scss";
 import cc from "classcat";
+import Image from "next/image";
 
 const Category = () => {
   const categoryList = [
-    { label: "Arts & Literature", link: "arts_and_literature" },
+    {
+      label: "Arts & Literature",
+      link: "arts_and_literature",
+      path: "/painting-art-svgrepo-com.svg",
+    },
     { label: "Film & TV", link: "film_&_tv" },
     { label: "Food & Drink", link: "food_and_drink" },
     { label: "General Knowledge", link: "general_knowledge" },
@@ -27,6 +32,7 @@ const Category = () => {
           {categoryList.map((category) => (
             <Link key={category.link} href={`/categories/${category.link}`}>
               <a className={style.anchor} id={category.link}>
+                <Image src={category.path} width={50} height={50} />
                 {category.label}
               </a>
             </Link>

@@ -28,19 +28,24 @@
 
 .categoryContainer {
     @include basicFlex();
-    flex-direction: column;
+    flex-direction: row;
     margin-top: 5rem;
+    flex-wrap: wrap;
     gap: 2px;
 }
 
 .anchor {
     @include heroFont();
     font-weight: bold;
-    font-size: $fontMedium;
+    font-size: $fontSmall;
     color: rgb(85, 118, 228);
     background-color: rgb(129, 216, 111);
     border-radius: 15px;
     padding: 10px;
-    width: 100%;
+    width: 160px;
+    height: 160px;
     text-align: center;
+    @include basicFlex();
+    justify-content: space-around;
+    flex-direction: column;
 }

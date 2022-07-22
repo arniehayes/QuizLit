@@ -10,11 +10,18 @@
     align-items: center;
 }
 
+@mixin flexEnd {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
 @mixin heroFont {
     font-family: 'Rampart One', cursive;
 }
 
-$fontSmall: 15px;
+$fontSmall: 18px;
+$fontSmallMedium: 20px;
 $fontMedium: 25px;
 $fontMediumLarge: 30px;
 $fontLarge: 50px;
