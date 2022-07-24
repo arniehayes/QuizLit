@@ -1,12 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import style from "../../styles/component/questionsPage.module.scss";
+import cc from "classcat";
 
 const Category = ({ results }) => {
-  console.log({ results });
+
+  console.log({results})
+
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  // store questions in an array
+  const questionArray = results.map((data) => (
+    {
+      question: data?.question,
+      answer: data?.correctAnswer,
+      incorrectAnswers: data?.incorrectAnswers,
+    }
+  ))
+
   return (
-    <div>
-      {results.length > 0 && results.map((data) => (
-        <p key={data?.id}>{data?.question}</p>
-      ))}
+    <div className={style.pageContainer}>
+      <div className={style.contentContainer}>
+        <div className={style.titleContainer}>
+          <h1 className={style.title}> Question {currentQuestion + 1} </h1>
+        </div>
+        <div className={style.questionContainer}>
+          <span className={style.question}>
+            {questionArray[currentQuestion].question}
+          </span>
+        </div>
+        <div className={style.answerContainer}>
+          <ul className={style.answerList}>
+            {questionArray[currentQuestion].incorrectAnswers.map((answer) => (
+              <li className={style.answers}>
+                <button className={style.button}>{answer}</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={style.sumbitContainer}>
+          <button className={cc([style.button, style.buttonSubmit])}>
+            Submit
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
