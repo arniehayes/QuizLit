@@ -14,17 +14,17 @@ const Category = ({ results }) => {
   useEffect(() => {
     const arr = results.map((data) => ({
       question: data?.question,
-      answers: data?.incorrectAnswers.push(data?.correctAnswer),
+      answers: [...data?.incorrectAnswers, data?.correctAnswer],
       correctAnswer: data?.correctAnswer,
     }));
     setQuestionArray(arr);
-  }, []);
-  console.log("Question Array: ", questionArray);
+    console.log("Question Array: ", arr);
+  },[results]);
 
 
   useEffect(() => {
-    console.log(questionArray[currentQuestion].answer);
-    if (chosenAnswer === questionArray[currentQuestion].correctAnswer) {
+    console.log(questionArray[currentQuestion]?.answers);
+    if (chosenAnswer === questionArray[currentQuestion]?.correctAnswer) {
       console.log("CORRECT!");
       setCurrentQuestion((current) => current + 1);
     }
@@ -39,13 +39,13 @@ const Category = ({ results }) => {
         </div>
         <div className={style.questionContainer}>
           <span className={style.question}>
-            {questionArray[currentQuestion].question}
+            {questionArray[currentQuestion]?.question}
           </span>
         </div>
         <div className={style.answerContainer}>
           <ul className={style.answerList}>
-            {questionArray.length > 0 && questionArray[currentQuestion].answers.map(
-              (answers, id) => (
+            {questionArray?.length > 0 &&
+              questionArray[currentQuestion]?.answers.map((answers, id) => (
                 <li className={style.answers} key={id}>
                   <button
                     className={style.button}
@@ -58,8 +58,7 @@ const Category = ({ results }) => {
                     {answers}
                   </button>
                 </li>
-              )
-            )}
+              ))}
           </ul>
         </div>
         <div className={style.sumbitContainer}>
