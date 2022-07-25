@@ -9,19 +9,18 @@ const Category = ({ results }) => {
   const [chosenAnswer, setChosenAnswer] = useState();
   const [submit, setSubmit] = useState(false);
 
-  // store questions in an array
-  const questionArray = results.map((data) => ({
-    question: data?.question,
-    answers: data?.incorrectAnswers,
-    correctAnswer: data?.correctAnswer,
-    // incorrectAnswers: data?.incorrectAnswers,
-  }));
+  const [questionArray, setQuestionArray] = useState([]);
+
+  useEffect(() => {
+    const arr = results.map((data) => ({
+      question: data?.question,
+      answers: data?.incorrectAnswers.push(data?.correctAnswer),
+      correctAnswer: data?.correctAnswer,
+    }));
+    setQuestionArray(arr);
+  }, []);
   console.log("Question Array: ", questionArray);
 
-  // const handleAnswer = (answers) => {
-  //   setChosenAnswer(answers);
-  //   console.log("chosen answer: ", chosenAnswer);
-  // };
 
   useEffect(() => {
     console.log(questionArray[currentQuestion].answer);
@@ -45,20 +44,22 @@ const Category = ({ results }) => {
         </div>
         <div className={style.answerContainer}>
           <ul className={style.answerList}>
-            {questionArray[currentQuestion].answers.map((answers, id) => (
-              <li className={style.answers} key={id}>
-                <button
-                  className={style.button}
-                  onClick={() => {
-                    setChosenAnswer(answers),
-                      console.log("chosen answer:", chosenAnswer);
-                  }}
-                  type="submit"
-                >
-                  {answers}
-                </button>
-              </li>
-            ))}
+            {questionArray.length > 0 && questionArray[currentQuestion].answers.map(
+              (answers, id) => (
+                <li className={style.answers} key={id}>
+                  <button
+                    className={style.button}
+                    onClick={() => {
+                      setChosenAnswer(answers),
+                        console.log("chosen answer:", chosenAnswer);
+                    }}
+                    type="submit"
+                  >
+                    {answers}
+                  </button>
+                </li>
+              )
+            )}
           </ul>
         </div>
         <div className={style.sumbitContainer}>
