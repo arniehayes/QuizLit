@@ -6,15 +6,15 @@
 }
 
 .contentContainer {
-    @include basicFlex;
+    @include flexStart;
     flex-direction: column;
-    gap: 20rem;
     width: 100vw;
     height: 100vh;
 }
 
 .titleContainer {
     @include basicFlex;
+    margin-top: 2rem;
 }
 
 .title {
@@ -27,6 +27,7 @@
 
 .anchorContainer {
     @include basicFlex;
+    margin-top: 15rem;
 }
 
 .anchor {
