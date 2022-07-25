@@ -7,6 +7,7 @@ const Category = ({ results }) => {
   console.log({results})
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [chosenAnswer, setChosenAnswer] = useState();
 
   // store questions in an array
   const questionArray = results.map((data) => (
@@ -15,7 +16,17 @@ const Category = ({ results }) => {
       answer: data?.correctAnswer,
       incorrectAnswers: data?.incorrectAnswers,
     }
-  ))
+  ));
+
+  const handleAnswer = (answers) => {
+    setChosenAnswer(answers);
+    console.log("chosen answer: ", chosenAnswer);
+  };
+
+  const handleSubmit = () => {
+    if (chosenAnswer === questionArray[currentQuestion].answer)
+      setCurrentQuestion((current) => current + 1);
+  }
 
   return (
     <div className={style.pageContainer}>
@@ -30,15 +41,15 @@ const Category = ({ results }) => {
         </div>
         <div className={style.answerContainer}>
           <ul className={style.answerList}>
-            {questionArray[currentQuestion].incorrectAnswers.map((answer) => (
-              <li className={style.answers}>
-                <button className={style.button}>{answer}</button>
+            {questionArray[currentQuestion].incorrectAnswers.map((answers, id) => (
+              <li className={style.answers} key={id}>
+                <button className={style.button} onClick={() => handleAnswer(answers)}>{answers}</button>
               </li>
             ))}
           </ul>
         </div>
         <div className={style.sumbitContainer}>
-          <button className={cc([style.button, style.buttonSubmit])}>
+          <button className={cc([style.button, style.buttonSubmit])} onClick={() => handleSubmit()}>
             Submit
           </button>
         </div>
@@ -49,6 +60,8 @@ const Category = ({ results }) => {
 
 export default Category;
 
+
+// Getting API data
 export const getStaticProps = async ({ params }) => {
   const results = await fetch(
     `https://the-trivia-api.com/api/questions?categories=${params.category}&limit=20`
