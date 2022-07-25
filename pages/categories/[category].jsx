@@ -1,32 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "../../styles/component/questionsPage.module.scss";
 import cc from "classcat";
 
 const Category = ({ results }) => {
-
-  console.log({results})
+  console.log({ results });
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [chosenAnswer, setChosenAnswer] = useState();
+  const [submit, setSubmit] = useState(false);
 
   // store questions in an array
-  const questionArray = results.map((data) => (
-    {
-      question: data?.question,
-      answer: data?.correctAnswer,
-      incorrectAnswers: data?.incorrectAnswers,
-    }
-  ));
+  const questionArray = results.map((data) => ({
+    question: data?.question,
+    answers: data?.incorrectAnswers,
+    correctAnswer: data?.correctAnswer,
+    // incorrectAnswers: data?.incorrectAnswers,
+  }));
+  console.log("Question Array: ", questionArray);
 
-  const handleAnswer = (answers) => {
-    setChosenAnswer(answers);
-    console.log("chosen answer: ", chosenAnswer);
-  };
+  // const handleAnswer = (answers) => {
+  //   setChosenAnswer(answers);
+  //   console.log("chosen answer: ", chosenAnswer);
+  // };
 
-  const handleSubmit = () => {
-    if (chosenAnswer === questionArray[currentQuestion].answer)
+  useEffect(() => {
+    console.log(questionArray[currentQuestion].answer);
+    if (chosenAnswer === questionArray[currentQuestion].correctAnswer) {
+      console.log("CORRECT!");
       setCurrentQuestion((current) => current + 1);
-  }
+    }
+  },[submit]);
+
 
   return (
     <div className={style.pageContainer}>
@@ -41,15 +45,29 @@ const Category = ({ results }) => {
         </div>
         <div className={style.answerContainer}>
           <ul className={style.answerList}>
-            {questionArray[currentQuestion].incorrectAnswers.map((answers, id) => (
+            {questionArray[currentQuestion].answers.map((answers, id) => (
               <li className={style.answers} key={id}>
-                <button className={style.button} onClick={() => handleAnswer(answers)}>{answers}</button>
+                <button
+                  className={style.button}
+                  onClick={() => {
+                    setChosenAnswer(answers),
+                      console.log("chosen answer:", chosenAnswer);
+                  }}
+                  type="submit"
+                >
+                  {answers}
+                </button>
               </li>
             ))}
           </ul>
         </div>
         <div className={style.sumbitContainer}>
-          <button className={cc([style.button, style.buttonSubmit])} onClick={() => handleSubmit()}>
+          <button
+            className={cc([style.button, style.buttonSubmit])}
+            onClick={() => {
+              setSubmit(true), console.log("submitted answer: ", chosenAnswer);
+            }}
+          >
             Submit
           </button>
         </div>
@@ -59,7 +77,6 @@ const Category = ({ results }) => {
 };
 
 export default Category;
-
 
 // Getting API data
 export const getStaticProps = async ({ params }) => {
