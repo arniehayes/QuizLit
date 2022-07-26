@@ -6,8 +6,9 @@ const Category = ({ results }) => {
   console.log({ results });
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [chosenAnswer, setChosenAnswer] = useState();
+  const [chosenAnswer, setChosenAnswer] = useState("");
   const [submit, setSubmit] = useState(false);
+  const [totalCorrect, setTotalCorrect] = useState(0);
 
   const [questionArray, setQuestionArray] = useState([]);
 
@@ -18,26 +19,20 @@ const Category = ({ results }) => {
       correctAnswer: data?.correctAnswer,
     }));
     setQuestionArray(arr);
-    console.log("Question Array: ", arr);
   }, [results]);
 
   useEffect(() => {
-    if (
-      chosenAnswer &&
-      chosenAnswer === questionArray[currentQuestion]?.correctAnswer
-    ) {
-      console.log("CORRECT!");
-      setCurrentQuestion((current) => current + 1);
-    } else if (chosenAnswer) {
-      console.log("WRONG!");
+    if (chosenAnswer && chosenAnswer === questionArray[currentQuestion]?.correctAnswer) {
+      setTotalCorrect((current) => current + 1);
     }
+    console.log("Total Correct = ", totalCorrect);
     // resetting state
     setSubmit(false);
   }, [submit]);
 
   return (
     <div className={style.pageContainer}>
-      <div className={style.contentContainer}>
+      {currentQuestion < 20 ? <div className={style.contentContainer}>
         <div className={style.titleContainer}>
           <h1 className={style.title}> Question {currentQuestion + 1} </h1>
         </div>
@@ -54,8 +49,7 @@ const Category = ({ results }) => {
                   <button
                     className={style.button}
                     onClick={() => {
-                      setChosenAnswer(answers),
-                        console.log("chosen answer:", chosenAnswer);
+                      setChosenAnswer(answers);
                     }}
                     type="submit"
                   >
@@ -69,13 +63,15 @@ const Category = ({ results }) => {
           <button
             className={cc([style.button, style.buttonSubmit])}
             onClick={() => {
-              setSubmit(true), console.log("submitted answer: ", chosenAnswer);
+              setSubmit(true);
+              setCurrentQuestion((current) => current + 1);
+              console.log(chosenAnswer)
             }}
           >
             Submit
           </button>
         </div>
-      </div>
+      </div> : <div>GAME OVER</div>}
     </div>
   );
 };
