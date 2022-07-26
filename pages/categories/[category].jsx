@@ -14,22 +14,26 @@ const Category = ({ results }) => {
   useEffect(() => {
     const arr = results.map((data) => ({
       question: data?.question,
-      answers: [...data?.incorrectAnswers, data?.correctAnswer],
+      answers: [...data?.incorrectAnswers, data?.correctAnswer].sort(() => Math.random() - 0.5), // randomize this
       correctAnswer: data?.correctAnswer,
     }));
     setQuestionArray(arr);
     console.log("Question Array: ", arr);
-  },[results]);
-
+  }, [results]);
 
   useEffect(() => {
-    console.log(questionArray[currentQuestion]?.answers);
-    if (chosenAnswer === questionArray[currentQuestion]?.correctAnswer) {
+    if (
+      chosenAnswer &&
+      chosenAnswer === questionArray[currentQuestion]?.correctAnswer
+    ) {
       console.log("CORRECT!");
       setCurrentQuestion((current) => current + 1);
+    } else if (chosenAnswer) {
+      console.log("WRONG!");
     }
-  },[submit]);
-
+    // resetting state
+    setSubmit(false);
+  }, [submit]);
 
   return (
     <div className={style.pageContainer}>
