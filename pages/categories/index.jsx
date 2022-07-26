@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import style from "../../styles/component/categories.module.scss";
+import style from "../../styles/pageStyles/categories.module.scss";
 import cc from "classcat";
 import Image from "next/image";
 
@@ -13,7 +13,7 @@ const Category = () => {
     },
     {
       label: "Film & TV",
-      link: "film_&_tv",
+      link: "film_and_tv",
       path: "/film-strip-svgrepo-com.svg",
     },
     {

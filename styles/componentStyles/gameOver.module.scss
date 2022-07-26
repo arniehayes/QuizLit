@@ -1,0 +1,47 @@
+@import "styles/_variables";
+
+.contentContainer {
+  @include heroFont;
+  @include flexStart;
+  flex-direction: column;
+  width: 100vw;
+  padding: 0 35px;
+}
+
+.header {
+  @include basicFlex;
+  margin-top: 5rem;
+  font-size: $fontLarge;
+  color: $mainColorPurple;
+  font-weight: bold;
+}
+
+.score {
+  @include basicFlex;
+  margin-top: 5rem;
+  font-size: $fontXL;
+  font-weight: bold;
+  color: rgb(71, 109, 179);
+}
+
+.anchorContainer {
+    @include basicFlex;
+    margin-top: 10rem;
+    width: 100%;
+}
+
+.anchor {
+    @include heroFont;
+    font-weight: bold;
+    font-size: $fontSmall;
+    color: rgb(0, 0, 0);
+    background-color: rgb(162, 204, 187);
+    border-radius: 15px;
+    padding: 10px;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    @include basicFlex;
+    justify-content: space-around;
+    flex-direction: column;
+}

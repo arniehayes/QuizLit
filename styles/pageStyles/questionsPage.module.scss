@@ -21,13 +21,13 @@
   padding: 0;
   margin: 0;
   @include heroFont;
-  color: rgb(140, 79, 255);
+  color: $mainColorPurple;
   font-size: $fontLarge;
 }
 
 .questionContainer {
   @include basicFlex;
-  margin-top: 5rem;
+  margin-top: 3rem;
   max-width: 80vw;
   background-color: rgb(224, 121, 90);
   border-radius: 10px;
@@ -46,13 +46,14 @@
 
 .answerContainer {
   @include basicFlex;
-  margin-top: 5rem;
+  margin-top: 3rem;
   width: 100%;
 }
 
 .answerList {
   @include basicFlex;
   flex-direction: column;
+  gap: 12px;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -67,7 +68,7 @@
 
 .sumbitContainer {
     @include basicFlex;
-    margin-top: 5rem;
+    margin-top: 3rem;
     width: 100%;
 }
 
@@ -86,13 +87,21 @@
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  margin: 12px 0 0;
+  // margin: 12px 0 0;
   outline: none;
   overflow: hidden;
   width: 100%;
+
+  &:focus {
+    background-color: #2f7a3c;
+  }
 }
 
 .buttonSubmit {
     background-color: rgb(247, 95, 115);
+
+  &:focus {
+    background-color: rgb(247, 95, 115);
+  }
 }
 

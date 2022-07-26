@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import style from "../../styles/component/questionsPage.module.scss";
+import style from "../../styles/pageStyles/questionsPage.module.scss";
 import cc from "classcat";
+import GameOver from "../../components/GameOver";
 
 const Category = ({ results }) => {
   console.log({ results });
@@ -22,12 +23,23 @@ const Category = ({ results }) => {
   }, [results]);
 
   useEffect(() => {
+    console.log("CHOSEN ANSWER: ", chosenAnswer);
     if (chosenAnswer && chosenAnswer === questionArray[currentQuestion]?.correctAnswer) {
+      console.log("YOU ARE CORRECT");
       setTotalCorrect((current) => current + 1);
+      setCurrentQuestion((current) => current + 1);
+      setSubmit(false);
+      setChosenAnswer("");
+    }
+    else if (chosenAnswer && submit) {
+      setCurrentQuestion((current) => current + 1);
+      setSubmit(false);
+      setChosenAnswer("");
     }
     console.log("Total Correct = ", totalCorrect);
     // resetting state
     setSubmit(false);
+    setChosenAnswer("");
   }, [submit]);
 
   return (
@@ -51,7 +63,6 @@ const Category = ({ results }) => {
                     onClick={() => {
                       setChosenAnswer(answers);
                     }}
-                    type="submit"
                   >
                     {answers}
                   </button>
@@ -64,14 +75,12 @@ const Category = ({ results }) => {
             className={cc([style.button, style.buttonSubmit])}
             onClick={() => {
               setSubmit(true);
-              setCurrentQuestion((current) => current + 1);
-              console.log(chosenAnswer)
             }}
           >
             Submit
           </button>
         </div>
-      </div> : <div>GAME OVER</div>}
+      </div> : <GameOver totalCorrect={totalCorrect} />}
     </div>
   );
 };
