@@ -95,12 +95,24 @@
   &:focus {
     background-color: #2f7a3c;
   }
+    &:hover {
+    background-color: #2f7a3c;
+  }
+    &:active {
+    background-color: #2f7a3c;
+  }
 }
 
 .buttonSubmit {
     background-color: rgb(247, 95, 115);
 
   &:focus {
+    background-color: rgb(247, 95, 115);
+  }
+    &:hover {
+    background-color: rgb(247, 95, 115);
+  }
+    &:active {
     background-color: rgb(247, 95, 115);
   }
 }
