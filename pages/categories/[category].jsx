@@ -76,6 +76,7 @@ const Category = ({ results }) => {
             onClick={() => {
               setSubmit(true);
             }}
+            tabIndex="0"
           >
             Submit
           </button>
