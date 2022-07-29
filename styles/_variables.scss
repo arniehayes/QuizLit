@@ -1,3 +1,4 @@
+// FLEX
 @mixin basicFlex {
     display: flex;
     justify-content: center;
@@ -16,6 +17,7 @@
     align-items: flex-end;
 }
 
+// FONTS
 @mixin heroFont {
     font-family: 'Rampart One', cursive;
 }
@@ -24,6 +26,7 @@
     font-family: 'Lato', sans-serif;
 }
 
+//FONT SIZES
 $fontSmall: 18px;
 $fontSmallMedium: 20px;
 $fontMedium: 25px;
@@ -31,4 +34,8 @@ $fontMediumLarge: 30px;
 $fontLarge: 50px;
 $fontXL: 70px;
 
+// COLORS
 $mainColorPurple: rgb(140, 79, 255);
+// $buttonColor
+// $titleColor
+// $textColor
