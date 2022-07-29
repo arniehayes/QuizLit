@@ -56,7 +56,7 @@ const Category = ({ results }) => {
         <div className={style.answerContainer}>
           <ul className={style.answerList}>
             {questionArray?.length > 0 &&
-              questionArray[currentQuestion]?.answers.map((answers, id) => (
+              questionArray[currentQuestion]?.answers.sort(() => Math.random() - 0.5).map((answers, id) => (
                 <li className={style.answers} key={id}>
                   <button
                     className={style.button}
