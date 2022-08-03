@@ -16,7 +16,12 @@ const CurrentAnswers = ({ questionArray, currentQuestion, setChosenAnswer, corre
                                 }}
                             >
                                 {answers}
-                                {correctAnswer ?
+                                
+                                {
+                                    // Todo: Only show icons on the answer that was chosen
+                                    // if the answer is correct then show the svg on the correct answer
+                                    // if the answer if wrong then show the svg on the correct AND wrong answer
+                                    correctAnswer ?
                                     <Image src={srcCorrect} width={30} height={30} className={style.answerStatus} /> :
                                     <>
                                         <Image src={srcWrong} width={30} height={30} className={style.answerStatus} />
