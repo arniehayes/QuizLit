@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import style from "../../styles/pageStyles/questionsPage.module.scss";
-import cc from "classcat";
 import GameOver from "../../components/GameOver";
+import QuestionNumber from "../../components/QuestionNumber";
+import CurrentQuestion from "../../components/CurrentQuestion";
+import CurrentAnswers from "../../components/CurrentAnswers";
+import SubmitButton from "../../components/SubmitButton";
 
 const Category = ({ results }) => {
   console.log({ results });
@@ -44,43 +47,12 @@ const Category = ({ results }) => {
 
   return (
     <div className={style.pageContainer}>
-      {currentQuestion < 20 ? <div className={style.contentContainer}>
-        <div className={style.titleContainer}>
-          <h1 className={style.title}> Question {currentQuestion + 1} </h1>
-        </div>
-        <div className={style.questionContainer}>
-          <span className={style.question}>
-            {questionArray[currentQuestion]?.question}
-          </span>
-        </div>
-        <div className={style.answerContainer}>
-          <ul className={style.answerList}>
-            {questionArray?.length > 0 &&
-              questionArray[currentQuestion]?.answers.map((answers, id) => (
-                <li className={style.answers} key={id}>
-                  <button
-                    className={style.button}
-                    onClick={() => {
-                      setChosenAnswer(answers);
-                    }}
-                  >
-                    {answers}
-                  </button>
-                </li>
-              ))}
-          </ul>
-        </div>
-        <div className={style.sumbitContainer}>
-          <button
-            className={cc([style.button, style.buttonSubmit])}
-            onClick={() => {
-              setSubmit(true);
-            }}
-            tabIndex="0"
-          >
-            Submit
-          </button>
-        </div>
+      {currentQuestion < 20 ?
+        <div className={style.contentContainer}>
+          <QuestionNumber currentQuestion={currentQuestion} />
+          <CurrentQuestion questionArray={questionArray} currentQuestion={currentQuestion} />
+          <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} />
+          <SubmitButton setSubmit={setSubmit}/>
       </div> : <GameOver totalCorrect={totalCorrect} />}
     </div>
   );
