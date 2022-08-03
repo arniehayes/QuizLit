@@ -5,6 +5,7 @@ import QuestionNumber from "../../components/QuestionNumber";
 import CurrentQuestion from "../../components/CurrentQuestion";
 import CurrentAnswers from "../../components/CurrentAnswers";
 import SubmitButton from "../../components/SubmitButton";
+import NextQuestionButton from "../../components/NextQuestionButton";
 
 const Category = ({ results }) => {
   console.log({ results });
@@ -12,9 +13,12 @@ const Category = ({ results }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [chosenAnswer, setChosenAnswer] = useState("");
   const [submit, setSubmit] = useState(false);
+  const [nextQuestion, setNextQuestion] = useState(false);
+  const [correctAnswer, setCorrectAnswer] = useState(false);
   const [totalCorrect, setTotalCorrect] = useState(0);
-
   const [questionArray, setQuestionArray] = useState([]);
+  const [svgPathCorrect, setSvgPathCorrect] = useState("/");
+  const [svgPathWrong, setSvgPathWrong] = useState("/");
 
   useEffect(() => {
     const arr = results.map((data) => ({
@@ -29,21 +33,30 @@ const Category = ({ results }) => {
     console.log("CHOSEN ANSWER: ", chosenAnswer);
     if (chosenAnswer && chosenAnswer === questionArray[currentQuestion]?.correctAnswer) {
       console.log("YOU ARE CORRECT");
+      setCorrectAnswer(true);
       setTotalCorrect((current) => current + 1);
-      setCurrentQuestion((current) => current + 1);
-      setSubmit(false);
-      setChosenAnswer("");
+      setSvgPathCorrect("/check-svgrepo-com.svg");
     }
     else if (chosenAnswer && submit) {
+      setCorrectAnswer(false);
+      setSvgPathWrong("/cross-svgrepo-com.svg");
+      setSvgPathCorrect("/check-svgrepo-com.svg");
+    }
+    console.log("Total Correct = ", totalCorrect);
+  }, [submit]);
+
+  useEffect(() => {
+    if (chosenAnswer && submit && nextQuestion) {
       setCurrentQuestion((current) => current + 1);
       setSubmit(false);
       setChosenAnswer("");
     }
-    console.log("Total Correct = ", totalCorrect);
-    // resetting state
-    setSubmit(false);
-    setChosenAnswer("");
-  }, [submit]);
+    
+    setNextQuestion(false);
+    setSvgPathCorrect("/");
+    setSvgPathWrong("/");
+    setCorrectAnswer(false);
+  },[nextQuestion])
 
   return (
     <div className={style.pageContainer}>
@@ -51,8 +64,9 @@ const Category = ({ results }) => {
         <div className={style.contentContainer}>
           <QuestionNumber currentQuestion={currentQuestion} />
           <CurrentQuestion questionArray={questionArray} currentQuestion={currentQuestion} />
-          <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} />
-          <SubmitButton setSubmit={setSubmit}/>
+          <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} correctAnswer={correctAnswer} />
+          <SubmitButton setSubmit={setSubmit} />
+          <NextQuestionButton setNextQuestion={setNextQuestion}/>
       </div> : <GameOver totalCorrect={totalCorrect} />}
     </div>
   );
@@ -63,7 +77,7 @@ export default Category;
 // Getting API data
 export const getStaticProps = async ({ params }) => {
   const results = await fetch(
-    `https://the-trivia-api.com/api/questions?categories=${params.category}&limit=20`
+    `https://the-trivia-api.com/api/questions?categories=${params.category}&limit=3`
   ).then((res) => res.json());
   return {
     props: {

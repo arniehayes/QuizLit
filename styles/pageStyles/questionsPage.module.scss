@@ -64,6 +64,7 @@
   @include basicFlex;
   list-style: none;
   width: 100%;
+  position: relative;
 }
 
 .sumbitContainer {
@@ -117,3 +118,6 @@
   }
 }
 
+.answerStatus {
+  position: absolute;
+}

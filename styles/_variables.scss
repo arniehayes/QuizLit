@@ -17,6 +17,12 @@
     align-items: flex-end;
 }
 
+@mixin flexBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 // FONTS
 @mixin heroFont {
     font-family: 'Rampart One', cursive;
