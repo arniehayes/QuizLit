@@ -14,7 +14,6 @@ const Category = ({ results }) => {
   const [chosenAnswer, setChosenAnswer] = useState("");
   const [submit, setSubmit] = useState(false);
   const [nextQuestion, setNextQuestion] = useState(false);
-  const [correctAnswer, setCorrectAnswer] = useState(false);
   const [totalCorrect, setTotalCorrect] = useState(0);
   const [questionArray, setQuestionArray] = useState([]);
   const [svgPathCorrect, setSvgPathCorrect] = useState("/");
@@ -33,12 +32,10 @@ const Category = ({ results }) => {
     console.log("CHOSEN ANSWER: ", chosenAnswer);
     if (chosenAnswer && chosenAnswer === questionArray[currentQuestion]?.correctAnswer) {
       console.log("YOU ARE CORRECT");
-      setCorrectAnswer(true);
       setTotalCorrect((current) => current + 1);
       setSvgPathCorrect("/check-svgrepo-com.svg");
     }
     else if (chosenAnswer && submit) {
-      setCorrectAnswer(false);
       setSvgPathWrong("/cross-svgrepo-com.svg");
       setSvgPathCorrect("/check-svgrepo-com.svg");
     }
@@ -55,16 +52,15 @@ const Category = ({ results }) => {
     setNextQuestion(false);
     setSvgPathCorrect("/");
     setSvgPathWrong("/");
-    setCorrectAnswer(false);
   },[nextQuestion])
 
   return (
     <div className={style.pageContainer}>
-      {currentQuestion < 20 ?
+      {currentQuestion < 10 ?
         <div className={style.contentContainer}>
           <QuestionNumber currentQuestion={currentQuestion} />
           <CurrentQuestion questionArray={questionArray} currentQuestion={currentQuestion} />
-          <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} correctAnswer={correctAnswer} />
+          <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} submit={submit} />
           <SubmitButton setSubmit={setSubmit} />
           <NextQuestionButton setNextQuestion={setNextQuestion}/>
       </div> : <GameOver totalCorrect={totalCorrect} />}
@@ -77,7 +73,7 @@ export default Category;
 // Getting API data
 export const getStaticProps = async ({ params }) => {
   const results = await fetch(
-    `https://the-trivia-api.com/api/questions?categories=${params.category}&limit=3`
+    `https://the-trivia-api.com/api/questions?categories=${params.category}&limit=10&difficulty=medium`
   ).then((res) => res.json());
   return {
     props: {

@@ -74,6 +74,7 @@
 }
 
 .button {
+  position: relative;
   @include basicFlex;
   @include questionAnswerFont;
   font-size: $fontSmall;
@@ -120,4 +121,10 @@
 
 .answerStatus {
   position: absolute;
+  right: 5%;
+  display: none;
+}
+
+.display {
+  display: block;
 }

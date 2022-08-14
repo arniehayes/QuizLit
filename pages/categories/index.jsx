@@ -61,16 +61,6 @@ const Category = () => {
     },
   ];
 
-  useEffect(() => {
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function () {
-      output.innerHTML = this.value;
-    }
-  },[])
-
   return (
     <div className={style.pageContainer}>
       <div className={style.contentContainer}>
@@ -86,10 +76,6 @@ const Category = () => {
               </a>
             </Link>
           ))}
-        </div>
-        <div className={style.slidersContainer}>
-          <input type="range" min="1" max="20" value="10" id="myRange"></input>
-            <p>Value: <span id="demo"></span></p>
         </div>
       </div>
     </div>
