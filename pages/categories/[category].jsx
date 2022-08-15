@@ -48,11 +48,17 @@ const Category = ({ results }) => {
       setSubmit(false);
       setChosenAnswer("");
     }
+
+    if (currentQuestion < 10) {
+      fetch('/api/revalidate');
+    }
     
     setNextQuestion(false);
     setSvgPathCorrect("/");
     setSvgPathWrong("/");
-  },[nextQuestion])
+  },[nextQuestion]);
+
+
 
   return (
     <div className={style.pageContainer}>
