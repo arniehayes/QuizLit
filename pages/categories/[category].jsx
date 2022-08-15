@@ -49,7 +49,8 @@ const Category = ({ results }) => {
       setChosenAnswer("");
     }
 
-    if (currentQuestion < 10) {
+    if (currentQuestion >= 10) {
+      console.log("revalidating")
       fetch('/api/revalidate');
     }
     
