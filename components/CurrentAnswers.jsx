@@ -35,13 +35,13 @@ const [pickedButton, setPickedButton] = useState("")
                 }}
               >
                 <span>{answers}</span>
-                {submit && questionArray[currentQuestion]?.correctAnswer === answers && <img
+                {pickedButton && submit && questionArray[currentQuestion]?.correctAnswer === answers && <img
                     src={srcCorrect}
                     width={30}
                     height={30}
                     className={style.answerStatus}
                   />}
-                {submit && questionArray[currentQuestion]?.correctAnswer !== answers && <img
+                {pickedButton && submit && questionArray[currentQuestion]?.correctAnswer !== answers && <img
                   src={srcWrong}
                   width={30}
                   height={30}

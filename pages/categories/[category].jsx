@@ -50,7 +50,6 @@ const Category = ({ results }) => {
     }
 
     if (currentQuestion >= 10) {
-      console.log("revalidating")
       fetch('/api/revalidate');
     }
     
@@ -68,7 +67,7 @@ const Category = ({ results }) => {
           <QuestionNumber currentQuestion={currentQuestion} />
           <CurrentQuestion questionArray={questionArray} currentQuestion={currentQuestion} />
           <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} chosenAnswer={chosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} submit={submit} />
-          <SubmitButton setSubmit={setSubmit} />
+          <SubmitButton setSubmit={setSubmit} chosenAnswer={chosenAnswer}/>
           <NextQuestionButton setNextQuestion={setNextQuestion}/>
       </div> : <GameOver totalCorrect={totalCorrect} />}
     </div>

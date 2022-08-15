@@ -2,13 +2,13 @@ import React from 'react'
 import style from "../styles/pageStyles/questionsPage.module.scss";
 import cc from "classcat";
 
-const SubmitButton = ({setSubmit}) => {
+const SubmitButton = ({setSubmit, chosenAnswer}) => {
   return (
       <div className={style.sumbitContainer}>
           <button
               className={cc([style.button, style.buttonSubmit])}
               onClick={() => {
-                  setSubmit(true);
+                  chosenAnswer ? setSubmit(true) : null
               }}
               tabIndex="0"
           >
