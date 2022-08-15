@@ -3,6 +3,7 @@
 .pageContainer {
   @include basicFlex;
   flex-direction: column;
+  margin-bottom: 5rem;
 }
 
 .contentContainer {
@@ -47,6 +48,7 @@
 .answerContainer {
   @include basicFlex;
   margin-top: 3rem;
+  margin-bottom: 3rem;
   width: 100%;
 }
 
@@ -69,7 +71,7 @@
 
 .sumbitContainer {
     @include basicFlex;
-    margin-top: 3rem;
+    margin-bottom: 1rem;
     width: 100%;
 }
 
