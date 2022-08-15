@@ -29,17 +29,17 @@ const Category = ({ results }) => {
   }, [results]);
 
   useEffect(() => {
-    console.log("CHOSEN ANSWER: ", chosenAnswer);
     if (chosenAnswer && chosenAnswer === questionArray[currentQuestion]?.correctAnswer) {
-      console.log("YOU ARE CORRECT");
       setTotalCorrect((current) => current + 1);
       setSvgPathCorrect("/check-svgrepo-com.svg");
+      setSvgPathWrong("/cross-svgrepo-com.svg");
     }
     else if (chosenAnswer && submit) {
       setSvgPathWrong("/cross-svgrepo-com.svg");
       setSvgPathCorrect("/check-svgrepo-com.svg");
     }
-    console.log("Total Correct = ", totalCorrect);
+
+    console.log("chosen answer: ",chosenAnswer);
   }, [submit]);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const Category = ({ results }) => {
         <div className={style.contentContainer}>
           <QuestionNumber currentQuestion={currentQuestion} />
           <CurrentQuestion questionArray={questionArray} currentQuestion={currentQuestion} />
-          <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} submit={submit} />
+          <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} chosenAnswer={chosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} submit={submit} />
           <SubmitButton setSubmit={setSubmit} />
           <NextQuestionButton setNextQuestion={setNextQuestion}/>
       </div> : <GameOver totalCorrect={totalCorrect} />}

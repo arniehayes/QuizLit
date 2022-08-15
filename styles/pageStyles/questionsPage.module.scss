@@ -99,16 +99,27 @@
   &:focus {
     background-color: #2f7a3c;
   }
-    &:hover {
+  &:hover {
     background-color: #2f7a3c;
   }
-    &:active {
+  &:active {
+    background-color: #2f7a3c;
+  }
+  &:target {
     background-color: #2f7a3c;
   }
 }
 
+.buttonChosen {
+  background-color: #2f7a3c;
+}
+
+.buttonNotChosen {
+  background-color: #5c6fdb;
+}
+
 .buttonSubmit {
-    background-color: rgb(247, 95, 115);
+  background-color: rgb(247, 95, 115);
 
   &:focus {
     background-color: rgb(247, 95, 115);
@@ -124,9 +135,4 @@
 .answerStatus {
   position: absolute;
   right: 5%;
-  display: none;
-}
-
-.display {
-  display: block;
 }
