@@ -75,10 +75,17 @@ export const getStaticProps = async ({ params }) => {
   const results = await fetch(
     `https://the-trivia-api.com/api/questions?categories=${params.category}&limit=10&difficulty=medium`
   ).then((res) => res.json());
+  if (!results.ok) {
+    // If there is a server error, you might want to
+    // throw an error instead of returning so that the cache is not updated
+    // until the next successful request.
+    console.log(Error(`Failed to fetch posts, received status ${results.status}`))
+  }
   return {
     props: {
       results,
     },
+    revalidate: 60
   };
 };
 
