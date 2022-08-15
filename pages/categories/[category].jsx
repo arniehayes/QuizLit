@@ -49,7 +49,7 @@ const Category = ({ results }) => {
       setChosenAnswer("");
     }
 
-    if (currentQuestion >= 10) {
+    if (currentQuestion >= 1) {
       fetch('/api/revalidate');
     }
     
@@ -91,7 +91,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       results,
     },
-    revalidate: 60
+    revalidate: 20
   };
 };
 
