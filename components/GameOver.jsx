@@ -10,7 +10,7 @@ const GameOver = ({ totalCorrect }) => {
             {Math.floor(totalCorrect) + "/10"}
           </div>
           <div className={style.anchorContainer}>
-              <Link href={`/categories`}>
+              <Link href={`/`}>
                   <a className={style.anchor}>New Game!</a>
               </Link>
           </div>
