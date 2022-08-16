@@ -1,12 +1,9 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import style from "../../styles/pageStyles/categories.module.scss";
-import cc from "classcat";
 import Image from "next/image";
 
 const Category = () => {
-
-  // const [questionLimit, setQuestionLimit] = useState(0)
 
   const categoryList = [
     {

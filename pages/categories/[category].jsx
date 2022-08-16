@@ -22,7 +22,7 @@ const Category = ({ results }) => {
   useEffect(() => {
     const arr = results.map((data) => ({
       question: data?.question,
-      answers: [...data?.incorrectAnswers, data?.correctAnswer].sort(() => Math.random() - 0.5), // randomize this
+      answers: [...data?.incorrectAnswers, data?.correctAnswer].sort(() => Math.random() - 0.5),
       correctAnswer: data?.correctAnswer,
     }));
     setQuestionArray(arr);
@@ -66,7 +66,7 @@ const Category = ({ results }) => {
         <div className={style.contentContainer}>
           <QuestionNumber currentQuestion={currentQuestion} />
           <CurrentQuestion questionArray={questionArray} currentQuestion={currentQuestion} />
-          <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} chosenAnswer={chosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} submit={submit} />
+          <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} submit={submit} />
           <SubmitButton setSubmit={setSubmit} chosenAnswer={chosenAnswer}/>
           <NextQuestionButton setNextQuestion={setNextQuestion}/>
       </div> : <GameOver totalCorrect={totalCorrect} />}

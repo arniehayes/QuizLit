@@ -6,7 +6,6 @@ const CurrentAnswers = ({
   questionArray,
   currentQuestion,
   setChosenAnswer,
-  chosenAnswer,
   submit,
   srcCorrect,
   srcWrong,
