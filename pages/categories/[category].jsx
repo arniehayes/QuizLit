@@ -19,6 +19,9 @@ const Category = ({ results }) => {
   const [svgPathCorrect, setSvgPathCorrect] = useState("/");
   const [svgPathWrong, setSvgPathWrong] = useState("/");
 
+  // TODO:
+  // CALL FETCH TO GET MORE QUESTIONS EACH TIME THE USER FINISHES A GAME
+
   useEffect(() => {
     const arr = results.map((data) => ({
       question: data?.question,
