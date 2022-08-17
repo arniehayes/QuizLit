@@ -9,6 +9,7 @@
 .contentContainer {
   @include flexStart;
   flex-direction: column;
+  @include maxWidth;
   width: 100vw;
   padding: 0 30px;
 }

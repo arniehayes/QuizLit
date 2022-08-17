@@ -5,6 +5,7 @@
   @include flexStart;
   flex-direction: column;
   width: 100vw;
+  @include maxWidth;
   padding: 0 35px;
 }
 

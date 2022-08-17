@@ -9,6 +9,7 @@
     @include flexStart;
     flex-direction: column;
     width: 100vw;
+    @include maxWidth;
 }
 
 .titleContainer {
