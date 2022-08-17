@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 
 const Category = ({ results }) => {
   const router = useRouter();
-  console.log({ results });
+  // console.log({ results });
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [chosenAnswer, setChosenAnswer] = useState("");
@@ -22,11 +22,11 @@ const Category = ({ results }) => {
   const [svgPathWrong, setSvgPathWrong] = useState("/");
 
   useEffect(() => {
+    console.log("router query: ", router.query.category);
     async function fetchData() {
       const newData = await fetch(
         `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=medium`
       ).then((res) => res.json());
-      console.log("newData before call: ", newData);
       if (!newData.ok) {
         // If there is a server error, you might want to
         // throw an error instead of returning so that the cache is not updated
@@ -39,12 +39,16 @@ const Category = ({ results }) => {
         correctAnswer: data?.correctAnswer,
       }));
       setQuestionArray(newArr);
+      console.log("questionArray after new call: ", newArr);
     }
     if (currentQuestion > 9) {
       fetchData();
-      console.log("questionArray after new call: ", questionArray);
     }
   },[currentQuestion])
+
+  if (currentQuestion > 9) {
+    console.log("new question array", questionArray);
+  }
 
   useEffect(() => {
     const arr = results.map((data) => ({
@@ -65,16 +69,15 @@ const Category = ({ results }) => {
       setSvgPathWrong("/cross-svgrepo-com.svg");
       setSvgPathCorrect("/check-svgrepo-com.svg");
     }
-
   }, [submit]);
 
+  // Resetting states
   useEffect(() => {
     if (chosenAnswer && submit && nextQuestion) {
       setCurrentQuestion((current) => current + 1);
       setSubmit(false);
       setChosenAnswer("");
     }
-    
     setNextQuestion(false);
     setSvgPathCorrect("/");
     setSvgPathWrong("/");
