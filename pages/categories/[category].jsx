@@ -41,7 +41,7 @@ const Category = ({ results }) => {
       setQuestionArray(newArr);
       console.log("questionArray after new call: ", questionArray);
     }
-    if (currentQuestion === 9) {
+    if (currentQuestion > 9) {
       fetchData();
     }
   },[currentQuestion])
