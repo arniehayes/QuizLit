@@ -21,11 +21,7 @@ const Category = ({ results }) => {
   const [svgPathCorrect, setSvgPathCorrect] = useState("/");
   const [svgPathWrong, setSvgPathWrong] = useState("/");
 
-  // TODO:
-  // CALL FETCH TO GET MORE QUESTIONS EACH TIME THE USER FINISHES A GAME
-
   useEffect(() => {
-    console.log("router: ", router.query.category);
     async function fetchData() {
       const newData = await fetch(
         `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=medium`
@@ -44,10 +40,9 @@ const Category = ({ results }) => {
       }));
       setQuestionArray(newArr);
     }
-    if (currentQuestion === 9 ) {
+    if (currentQuestion === 9) {
       fetchData();
     }
-    console.log("newQuestionArray : ", questionArray);
   },[currentQuestion])
 
   useEffect(() => {
@@ -70,7 +65,6 @@ const Category = ({ results }) => {
       setSvgPathCorrect("/check-svgrepo-com.svg");
     }
 
-    console.log("chosen answer: ",chosenAnswer);
   }, [submit]);
 
   useEffect(() => {
@@ -122,7 +116,6 @@ export const getStaticProps = async ({ params }) => {
     props: {
       results,
     },
-    revalidate: 10
   };
 };
 
