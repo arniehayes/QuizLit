@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import style from "../../styles/pageStyles/categories.module.scss";
 import Image from "next/image";
 

@@ -6,8 +6,10 @@ import CurrentQuestion from "../../components/CurrentQuestion";
 import CurrentAnswers from "../../components/CurrentAnswers";
 import SubmitButton from "../../components/SubmitButton";
 import NextQuestionButton from "../../components/NextQuestionButton";
+import { useRouter } from 'next/router'
 
 const Category = ({ results }) => {
+  const router = useRouter();
   console.log({ results });
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -21,6 +23,32 @@ const Category = ({ results }) => {
 
   // TODO:
   // CALL FETCH TO GET MORE QUESTIONS EACH TIME THE USER FINISHES A GAME
+
+  useEffect(() => {
+    console.log("router: ", router.query.category);
+    async function fetchData() {
+      const newData = await fetch(
+        `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=medium`
+      ).then((res) => res.json());
+      console.log("newData: ", newData);
+      if (!newData.ok) {
+        // If there is a server error, you might want to
+        // throw an error instead of returning so that the cache is not updated
+        // until the next successful request.
+        console.log(Error(`Failed to fetch posts, received status ${newData.status}`))
+      }
+      const newArr = newData.map((data) => ({
+        question: data?.question,
+        answers: [...data?.incorrectAnswers, data?.correctAnswer].sort(() => Math.random() - 0.5),
+        correctAnswer: data?.correctAnswer,
+      }));
+      setQuestionArray(newArr);
+    }
+    if (currentQuestion === 9 ) {
+      fetchData();
+    }
+    console.log("newQuestionArray : ", questionArray);
+  },[currentQuestion])
 
   useEffect(() => {
     const arr = results.map((data) => ({
@@ -71,7 +99,7 @@ const Category = ({ results }) => {
           <CurrentQuestion questionArray={questionArray} currentQuestion={currentQuestion} />
           <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} submit={submit} />
           <SubmitButton setSubmit={setSubmit} chosenAnswer={chosenAnswer}/>
-          <NextQuestionButton setNextQuestion={setNextQuestion}/>
+          <NextQuestionButton setNextQuestion={setNextQuestion} />
       </div> : <GameOver totalCorrect={totalCorrect} />}
     </div>
   );
