@@ -26,7 +26,7 @@ const Category = ({ results }) => {
       const newData = await fetch(
         `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=medium`
       ).then((res) => res.json());
-      console.log("newData: ", newData);
+      console.log("newData before call: ", newData);
       if (!newData.ok) {
         // If there is a server error, you might want to
         // throw an error instead of returning so that the cache is not updated
@@ -39,10 +39,10 @@ const Category = ({ results }) => {
         correctAnswer: data?.correctAnswer,
       }));
       setQuestionArray(newArr);
-      console.log("questionArray after new call: ", questionArray);
     }
     if (currentQuestion > 9) {
       fetchData();
+      console.log("questionArray after new call: ", questionArray);
     }
   },[currentQuestion])
 
@@ -73,10 +73,6 @@ const Category = ({ results }) => {
       setCurrentQuestion((current) => current + 1);
       setSubmit(false);
       setChosenAnswer("");
-    }
-
-    if (currentQuestion >= 1) {
-      fetch('/api/revalidate');
     }
     
     setNextQuestion(false);
