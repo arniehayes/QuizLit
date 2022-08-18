@@ -91,7 +91,6 @@ export default Category;
 export const getStaticProps = async () => {
   return {
     props: {
-      data: "yo"
     },
   };
 };
