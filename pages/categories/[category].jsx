@@ -7,10 +7,10 @@ import CurrentAnswers from "../../components/CurrentAnswers";
 import SubmitButton from "../../components/SubmitButton";
 import NextQuestionButton from "../../components/NextQuestionButton";
 import { useRouter } from 'next/router'
+import Logo from "../../components/Logo";
 
 const Category = () => {
   const router = useRouter();
-  // console.log({ results });
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [chosenAnswer, setChosenAnswer] = useState("");
@@ -22,7 +22,6 @@ const Category = () => {
   const [svgPathWrong, setSvgPathWrong] = useState("/");
 
   useEffect(() => {
-    console.log("router query: ", router.query.category);
     async function fetchData() {
       const newData = await fetch(
         `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=medium`
@@ -39,14 +38,9 @@ const Category = () => {
         correctAnswer: data?.correctAnswer,
       }));
       setQuestionArray(newArr);
-      console.log("questionArray after new call: ", newArr);
     }
     fetchData();
   },[])
-
-  if (currentQuestion > 9) {
-    console.log("new question array", questionArray);
-  }
 
   useEffect(() => {
     if (chosenAnswer && chosenAnswer === questionArray[currentQuestion]?.correctAnswer) {
@@ -74,6 +68,7 @@ const Category = () => {
 
   return (
     <div className={style.pageContainer}>
+      <Logo />
       {currentQuestion < 10 ?
         <div className={style.contentContainer}>
           <QuestionNumber currentQuestion={currentQuestion} />

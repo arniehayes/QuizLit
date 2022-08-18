@@ -1,6 +1,7 @@
 import Link from "next/link";
 import style from "../../styles/pageStyles/categories.module.scss";
 import Image from "next/image";
+import Logo from "../../components/Logo";
 
 const Category = () => {
 
@@ -60,6 +61,7 @@ const Category = () => {
   return (
     <div className={style.pageContainer}>
       <div className={style.contentContainer}>
+        <Logo />
         <div className={style.titleContainer}>
           <h1 className={style.title}> Categories </h1>
         </div>

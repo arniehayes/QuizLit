@@ -1,0 +1,12 @@
+@import "styles/_variables";
+
+.logoContainer {
+    @include flexStart;
+    width: 100%;
+}
+
+.anchor {
+    @include basicFlex;
+    padding: 10px;
+}
+

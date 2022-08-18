@@ -1,12 +1,13 @@
 import Link from "next/link"
+import Logo from "../components/Logo";
 import style from "../styles/home.module.scss"
-import cc from "classcat";
 
 const Home = () => {
 
   return (
     <div className={style.pageContainer}>
       <div className={style.contentContainer}>
+        <Logo />
         <div className={style.titleContainer}>
           <h1 className={style.title}>QUIZLIT</h1>
         </div>

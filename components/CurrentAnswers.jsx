@@ -29,8 +29,6 @@ const [pickedButton, setPickedButton] = useState("")
                 onClick={() => {
                   setChosenAnswer(answers);
                   setPickedButton(answers);
-                  console.log("you clicked id :", answers);
-                  console.log(questionArray[currentQuestion]?.answers[id])
                 }}
               >
                 <span>{answers}</span>
