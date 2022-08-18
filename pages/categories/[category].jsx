@@ -8,7 +8,7 @@ import SubmitButton from "../../components/SubmitButton";
 import NextQuestionButton from "../../components/NextQuestionButton";
 import { useRouter } from 'next/router'
 
-const Category = ({ results }) => {
+const Category = () => {
   const router = useRouter();
   // console.log({ results });
 
@@ -41,10 +41,8 @@ const Category = ({ results }) => {
       setQuestionArray(newArr);
       console.log("questionArray after new call: ", newArr);
     }
-    if (currentQuestion > 9) {
-      fetchData();
-    }
-  },[currentQuestion])
+    fetchData();
+  },[])
 
   if (currentQuestion > 9) {
     console.log("new question array", questionArray);
@@ -83,8 +81,6 @@ const Category = ({ results }) => {
     setSvgPathWrong("/");
   },[nextQuestion]);
 
-
-
   return (
     <div className={style.pageContainer}>
       {currentQuestion < 10 ?
@@ -101,23 +97,24 @@ const Category = ({ results }) => {
 
 export default Category;
 
-// Getting API data
-export const getStaticProps = async ({ params }) => {
-  const results = await fetch(
-    `https://the-trivia-api.com/api/questions?categories=${params.category}&limit=10&difficulty=medium`
-  ).then((res) => res.json());
-  if (!results.ok) {
-    // If there is a server error, you might want to
-    // throw an error instead of returning so that the cache is not updated
-    // until the next successful request.
-    console.log(Error(`Failed to fetch posts, received status ${results.status}`))
-  }
-  return {
-    props: {
-      results,
-    },
-  };
-};
+// // Getting API data
+// export const getStaticProps = async ({ params }) => {
+//   const results = await fetch(
+//     `https://the-trivia-api.com/api/questions?categories=${params.category}&limit=10&difficulty=medium`
+//   ).then((res) => res.json());
+//   if (!results.ok) {
+//     // If there is a server error, you might want to
+//     // throw an error instead of returning so that the cache is not updated
+//     // until the next successful request.
+//     console.log(Error(`Failed to fetch posts, received status ${results.status}`))
+//   }
+//   return {
+//     props: {
+
+//       results,
+//     },
+//   };
+// };
 
 export const getStaticPaths = async () => {
   const response = await fetch(
