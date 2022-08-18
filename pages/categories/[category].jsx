@@ -49,15 +49,6 @@ const Category = () => {
   }
 
   useEffect(() => {
-    const arr = results.map((data) => ({
-      question: data?.question,
-      answers: [...data?.incorrectAnswers, data?.correctAnswer].sort(() => Math.random() - 0.5),
-      correctAnswer: data?.correctAnswer,
-    }));
-    setQuestionArray(arr);
-  }, [results]);
-
-  useEffect(() => {
     if (chosenAnswer && chosenAnswer === questionArray[currentQuestion]?.correctAnswer) {
       setTotalCorrect((current) => current + 1);
       setSvgPathCorrect("/check-svgrepo-com.svg");
