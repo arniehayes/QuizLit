@@ -28,7 +28,7 @@
 .categoryContainer {
     @include basicFlex;
     flex-direction: row;
-    margin-top: 5rem;
+    margin-top: 2rem;
     flex-wrap: wrap;
     gap: 2px;
 }
