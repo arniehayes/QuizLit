@@ -68,9 +68,9 @@ const Category = () => {
 
   return (
     <div className={style.pageContainer}>
-      <Logo />
       {currentQuestion < 10 ?
         <div className={style.contentContainer}>
+          <Logo />
           <QuestionNumber currentQuestion={currentQuestion} />
           <CurrentQuestion questionArray={questionArray} currentQuestion={currentQuestion} />
           <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} submit={submit} />
