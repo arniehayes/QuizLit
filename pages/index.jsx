@@ -1,26 +1,40 @@
-import Link from "next/link"
+import Link from "next/link";
 import Logo from "../components/Logo";
-import style from "../styles/home.module.scss"
+import style from "../styles/home.module.scss";
+import { motion } from "framer-motion";
 
 const Home = () => {
-
   return (
     <div className={style.pageContainer}>
       <div className={style.contentContainer}>
         <Logo />
         <div className={style.titleContainer}>
-          <h1 className={style.title}>QUIZLIT</h1>
+          <motion.h1
+            className={style.title}
+            initial={{ opacity: 0, y: -5 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", duration: 1, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            QUIZLIT
+          </motion.h1>
         </div>
         <div className={style.anchorContainer}>
           <Link href="/categories">
-            <a className={style.anchor}>
+            <motion.a 
+            className={style.anchor}
+            initial={{ opacity: 0, y: -5 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", duration: 1, delay: 0.4 }}
+            viewport={{ once: true }}
+            >
               Start New Game
-            </a>
+              </motion.a>
           </Link>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Home
+export default Home;

@@ -2,9 +2,9 @@ import Link from "next/link";
 import style from "../../styles/pageStyles/categories.module.scss";
 import Image from "next/image";
 import Logo from "../../components/Logo";
+import { motion } from "framer-motion";
 
 const Category = () => {
-
   const categoryList = [
     {
       label: "Arts & Literature",
@@ -63,15 +63,31 @@ const Category = () => {
       <div className={style.contentContainer}>
         <Logo />
         <div className={style.titleContainer}>
-          <h1 className={style.title}> Categories </h1>
+          <motion.h1
+            className={style.title}
+            initial={{ opacity: 0, y: -5 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", duration: 1, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            {" "}
+            Categories{" "}
+          </motion.h1>
         </div>
         <div className={style.categoryContainer}>
           {categoryList.map((category) => (
             <Link key={category.link} href={`/categories/${category.link}`}>
-              <a className={style.anchor} id={category.link}>
+              <motion.a
+                className={style.anchor}
+                id={category.link}
+                initial={{ opacity: 0, y: -5 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", duration: 1, delay: .04 }}
+                viewport={{ once: true }}
+              >
                 <Image src={category.path} width={60} height={60} />
                 {category.label}
-              </a>
+              </motion.a>
             </Link>
           ))}
         </div>

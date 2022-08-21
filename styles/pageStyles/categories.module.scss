@@ -17,6 +17,11 @@
     @include basicFlex;
 }
 
+.logoContainer {
+    @include flexStart;
+    width: 100vw;
+}
+
 .title {
     padding: 0;
     margin: 0;
