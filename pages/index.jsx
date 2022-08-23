@@ -28,7 +28,7 @@ const Home = () => {
             transition={{ type: "spring", duration: 1, delay: 0.4 }}
             viewport={{ once: true }}
             >
-              Start New Game
+                Start New Game
               </motion.a>
           </Link>
         </div>
