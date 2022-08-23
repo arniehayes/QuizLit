@@ -13,7 +13,7 @@
   @include basicFlex;
   margin-top: 5rem;
   font-size: $fontLarge;
-  color: $mainColorPurple;
+  color: $titleColor;
   font-weight: bold;
   cursor: default;
 }
@@ -23,7 +23,7 @@
   margin-top: 5rem;
   font-size: $fontXL;
   font-weight: bold;
-  color: rgb(71, 109, 179);
+  color: $scoreTextColor;
   cursor: default;
 }
 
@@ -36,9 +36,9 @@
 .anchor {
     @include heroFont;
     font-weight: bold;
-    font-size: $fontSmall;
-    color: rgb(0, 0, 0);
-    background-color: rgb(162, 204, 187);
+    font-size: $fontMediumLarge;
+    color: $textColor;
+    background-color: $startGameColor;
     border-radius: 15px;
     padding: 10px;
     width: 100%;

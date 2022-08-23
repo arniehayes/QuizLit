@@ -26,7 +26,7 @@
     padding: 0;
     margin: 0;
     @include heroFont;
-    color: $mainColorPurple;
+    color: $titleColor;
     font-size: $fontLarge;
     cursor: default;
 }
@@ -44,8 +44,8 @@
     @include heroFont;
     font-weight: bold;
     font-size: $fontSmall;
-    color: rgb(0, 0, 0);
-    background-color: rgb(162, 204, 187);
+    color: $textColor;
+    background-color: $categoryColor;
     border-radius: 15px;
     padding: 10px;
     width: 160px;
