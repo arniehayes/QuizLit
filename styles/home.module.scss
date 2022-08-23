@@ -28,6 +28,7 @@
     @include heroFont;
     color: rgb(140, 79, 255);
     font-size: $fontXL;
+    cursor: default;
 }
 
 .anchorContainer {
@@ -43,4 +44,5 @@
     background-color: rgb(129, 216, 111);
     border-radius: 15px;
     padding: 10px;
+    cursor: pointer;
 }

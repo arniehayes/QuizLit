@@ -28,6 +28,7 @@
     @include heroFont;
     color: $mainColorPurple;
     font-size: $fontLarge;
+    cursor: default;
 }
 
 .categoryContainer {
@@ -53,4 +54,5 @@
     @include basicFlex;
     justify-content: space-around;
     flex-direction: column;
+    cursor: pointer;
 }

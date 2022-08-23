@@ -8,5 +8,6 @@
 .anchor {
     @include basicFlex;
     padding: 10px;
+    cursor: pointer;
 }
 

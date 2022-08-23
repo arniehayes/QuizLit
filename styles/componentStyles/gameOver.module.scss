@@ -15,6 +15,7 @@
   font-size: $fontLarge;
   color: $mainColorPurple;
   font-weight: bold;
+  cursor: default;
 }
 
 .score {
@@ -23,6 +24,7 @@
   font-size: $fontXL;
   font-weight: bold;
   color: rgb(71, 109, 179);
+  cursor: default;
 }
 
 .anchorContainer {
@@ -45,4 +47,5 @@
     @include basicFlex;
     justify-content: space-around;
     flex-direction: column;
+    cursor: pointer;
 }
