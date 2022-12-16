@@ -20,6 +20,7 @@ const CurrentAnswers = ({
           questionArray[currentQuestion]?.answers.map((answers, id) => (
             <li className={style.answers} key={id}>
               <motion.button
+                id="btn"
                 className={cc([
                   style.button,
                   {

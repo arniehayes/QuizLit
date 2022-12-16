@@ -100,21 +100,24 @@
   &:hover {
     background-color: $hoverColor;
   }
+  &:focus {
+    background-color: $focusColor;
+  }
 }
 
 .buttonChosen {
-  background-color: $focusColor;
+  background-color: $focusColor !important;
 }
 
 .buttonNotChosen {
-  background-color: $answersButtonBG;
+  background-color: $answersButtonBG !important;
 }
 
 .buttonSubmit {
-  background-color: $submitButtonBG;
+  background-color: $submitButtonBG !important;
 
     &:hover {
-    background-color: $submitButtonBG;
+    background-color: $submitButtonBG !important;
   }
 }
 
