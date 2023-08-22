@@ -7,7 +7,7 @@ const NextQuestionButton = ({ setNextQuestion }) => {
   return (
       <div className={style.sumbitContainer}>
           <motion.button
-              className={cc([style.button, style.buttonSubmit])}
+              className={cc([style.button, style.buttonNext])}
               initial={{ opacity: 0, y: -5 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", duration: 1, delay: 0.7 }}

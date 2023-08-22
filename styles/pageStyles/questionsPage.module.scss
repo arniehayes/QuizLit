@@ -117,7 +117,15 @@
   background-color: $submitButtonBG !important;
 
     &:hover {
-    background-color: $submitButtonBG !important;
+    background-color: $submitHover !important;
+  }
+}
+
+.buttonNext {
+  background-color: $nextButtonBG !important;
+
+    &:hover {
+    background-color: $hoverColor !important;
   }
 }
 
