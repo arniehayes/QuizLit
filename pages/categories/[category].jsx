@@ -24,7 +24,7 @@ const Category = () => {
   useEffect(() => {
     async function fetchData() {
       const newData = await fetch(
-        `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=medium`
+        `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=easy`
       ).then((res) => res.json());
       if (!newData.ok) {
         // If there is a server error, you might want to
