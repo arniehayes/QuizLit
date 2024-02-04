@@ -13,7 +13,7 @@ const GameOver = ({ totalCorrect }) => {
         transition={{ type: "spring", duration: 1, delay: 0.3 }}
         viewport={{ once: true }}
       >
-        GAME OVER
+        <p>GAME OVER</p>
       </motion.div>
       <motion.div
         className={style.score}
