@@ -3,6 +3,8 @@ import style from "../../styles/pageStyles/categories.module.scss";
 import Image from "next/image";
 import Logo from "../../components/Logo";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { AddressContext } from "../_app.jsx";
 
 const Category = () => {
   const categoryList = [
@@ -58,6 +60,18 @@ const Category = () => {
     },
   ];
 
+  const { difficulty, setDifficulty } = useContext(AddressContext);
+
+  const chooseDifficulty = (diff) => {
+    if (diff == "easy") {
+      setDifficulty("easy");
+    } else if (diff == "medium") {
+      setDifficulty("medium");
+    } else if (diff == "hard") {
+      setDifficulty("hard");
+    }
+  };
+
   return (
     <div className={style.pageContainer}>
       <div className={style.contentContainer}>
@@ -70,9 +84,51 @@ const Category = () => {
             transition={{ type: "spring", duration: 1, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            {" "}
-            Categories{" "}
+            Categories
           </motion.h1>
+        </div>
+        <div className={style.difficultyContainer}>
+          <motion.h2
+            className={style.difficultyTitle}
+            initial={{ opacity: 0, y: -5 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", duration: 1, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            Choose difficulty
+          </motion.h2>
+          <div className={style.categoryContainer}>
+            <motion.button
+              onClick={() => chooseDifficulty("easy")}
+              className={`${style.anchor} ${style.button} ${style.green}`}
+              initial={{ opacity: 0, y: -5 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", duration: 1, delay: 0.04 }}
+              viewport={{ once: true }}
+            >
+              Easy
+            </motion.button>
+            <motion.button
+              onClick={() => chooseDifficulty("medium")}
+              className={`${style.anchor} ${style.button} ${style.orange}`}
+              initial={{ opacity: 0, y: -5 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", duration: 1, delay: 0.04 }}
+              viewport={{ once: true }}
+            >
+              Medium
+            </motion.button>
+            <motion.button
+              onClick={() => chooseDifficulty("hard")}
+              className={`${style.anchor} ${style.button} ${style.red}`}
+              initial={{ opacity: 0, y: -5 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", duration: 1, delay: 0.04 }}
+              viewport={{ once: true }}
+            >
+              Hard
+            </motion.button>
+          </div>
         </div>
         <div className={style.categoryContainer}>
           {categoryList.map((category) => (
@@ -82,7 +138,7 @@ const Category = () => {
                 id={category.link}
                 initial={{ opacity: 0, y: -5 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", duration: 1, delay: .04 }}
+                transition={{ type: "spring", duration: 1, delay: 0.04 }}
                 viewport={{ once: true }}
               >
                 <Image src={category.path} width={60} height={60} />

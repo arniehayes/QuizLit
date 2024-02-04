@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import style from "../../styles/pageStyles/questionsPage.module.scss";
 import GameOver from "../../components/GameOver";
 import QuestionNumber from "../../components/QuestionNumber";
@@ -8,6 +8,7 @@ import SubmitButton from "../../components/SubmitButton";
 import NextQuestionButton from "../../components/NextQuestionButton";
 import { useRouter } from 'next/router'
 import Logo from "../../components/Logo";
+import { AddressContext } from "../_app.jsx";
 
 const Category = () => {
   const router = useRouter();
@@ -23,8 +24,9 @@ const Category = () => {
 
   useEffect(() => {
     async function fetchData() {
+      console.log("difficulty:", difficulty);
       const newData = await fetch(
-        `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=easy`
+        `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=${difficulty}` 
       ).then((res) => res.json());
       if (!newData.ok) {
         // If there is a server error, you might want to
@@ -65,6 +67,11 @@ const Category = () => {
     setSvgPathCorrect("/");
     setSvgPathWrong("/");
   },[nextQuestion]);
+
+
+  const {
+    difficulty
+  } = useContext(AddressContext);
 
   return (
     <div className={style.pageContainer}>

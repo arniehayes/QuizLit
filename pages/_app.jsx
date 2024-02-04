@@ -1,7 +1,11 @@
 import "../styles/globals.css";
 import Head from "next/head";
+import React, { useState } from "react";
+
+export const AddressContext = React.createContext();
 
 function MyApp({ Component, pageProps }) {
+  const [difficulty, setDifficulty] = useState("");
     return (
       <>
         <Head>
@@ -21,7 +25,11 @@ function MyApp({ Component, pageProps }) {
           {/* FAVICON */}
           <link rel="shortcut icon" href="/brain_32x.png" />
         </Head>
-        <Component {...pageProps} />
+        <AddressContext.Provider 
+          value={{difficulty, setDifficulty}}
+        >
+          <Component {...pageProps} />
+        </AddressContext.Provider>
       </>
     );
 }

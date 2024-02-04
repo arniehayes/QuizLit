@@ -4,6 +4,7 @@
 .pageContainer {
     @include basicFlex;
     flex-direction: column;
+    margin-bottom: 2rem;
 }
 
 .contentContainer {
@@ -15,6 +16,25 @@
 
 .titleContainer {
     @include basicFlex;
+}
+
+.difficultyContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    @include maxWidth;
+}
+
+.difficultyTitle {
+    @include basicFlex;
+    padding: 0;
+    margin: 0;
+    @include heroFont;
+    color: $titleColor;
+    font-size: $fontMedium;
+    cursor: default;
 }
 
 .logoContainer {
@@ -55,4 +75,22 @@
     justify-content: space-around;
     flex-direction: column;
     cursor: pointer;
+}
+
+.button {
+    border: none;
+    width: 130px;
+    height: 80px;
+}
+
+.green {
+    background-color: rgb(85, 199, 85);
+}
+
+.orange {
+    background-color: rgb(231, 174, 68);
+}
+
+.red {
+    background-color: rgb(240, 77, 77);
 }
