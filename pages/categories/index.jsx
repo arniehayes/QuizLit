@@ -3,8 +3,9 @@ import style from "../../styles/pageStyles/categories.module.scss";
 import Image from "next/image";
 import Logo from "../../components/Logo";
 import { motion } from "framer-motion";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AddressContext } from "../_app.jsx";
+import cc from "classcat";
 
 const Category = () => {
   const categoryList = [
@@ -61,14 +62,18 @@ const Category = () => {
   ];
 
   const { difficulty, setDifficulty } = useContext(AddressContext);
+  const [chosen, setChosen] = useState();
 
   const chooseDifficulty = (diff) => {
     if (diff == "easy") {
       setDifficulty("easy");
+      setChosen(true);
     } else if (diff == "medium") {
       setDifficulty("medium");
+      setChosen(true);
     } else if (diff == "hard") {
       setDifficulty("hard");
+      setChosen(true);
     }
   };
 
@@ -100,7 +105,9 @@ const Category = () => {
           <div className={style.categoryContainer}>
             <motion.button
               onClick={() => chooseDifficulty("easy")}
-              className={`${style.anchor} ${style.button} ${style.green}`}
+              className={cc([style.anchor, style.button, {
+                [style.green]: chosen
+              }])}
               initial={{ opacity: 0, y: -5 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", duration: 1, delay: 0.04 }}
@@ -110,7 +117,9 @@ const Category = () => {
             </motion.button>
             <motion.button
               onClick={() => chooseDifficulty("medium")}
-              className={`${style.anchor} ${style.button} ${style.orange}`}
+              className={cc([style.anchor, style.button, {
+                [style.orange]: chosen
+              }])}
               initial={{ opacity: 0, y: -5 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", duration: 1, delay: 0.04 }}
@@ -120,7 +129,9 @@ const Category = () => {
             </motion.button>
             <motion.button
               onClick={() => chooseDifficulty("hard")}
-              className={`${style.anchor} ${style.button} ${style.red}`}
+              className={cc([style.anchor, style.button, {
+                [style.red]: chosen
+              }])}
               initial={{ opacity: 0, y: -5 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", duration: 1, delay: 0.04 }}

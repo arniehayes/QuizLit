@@ -1,8 +1,15 @@
 import React from 'react'
+import { AddressContext } from "../_app.jsx";
 
 const DifficultyLevel = () => {
+
+    const {
+        difficulty
+      } = useContext(AddressContext);
   return (
-    <div>DifficultyLevel</div>
+    <div>
+        <span>Difficulty: {difficulty}</span>
+    </div>
   )
 }
 
