@@ -25,7 +25,7 @@ const GameOver = ({ totalCorrect }) => {
         {Math.floor(totalCorrect) + "/10"}
       </motion.div>
       <div className={style.anchorContainer}>
-        <Link href={`/`}>
+        <Link href={`/categories`}>
           <motion.a
             className={style.anchor}
             initial={{ opacity: 0, y: -5 }}
