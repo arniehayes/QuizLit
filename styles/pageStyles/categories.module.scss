@@ -85,12 +85,27 @@
 
 .green {
     background-color: rgb(85, 199, 85);
+    
+    &:focus {
+        background-color: rgb(71, 156, 71);
+        color: white;
+    }
 }
 
 .orange {
     background-color: rgb(231, 174, 68);
+
+    &:focus {
+        background-color: rgb(192, 140, 42);
+        color: white;
+    }
 }
 
 .red {
     background-color: rgb(240, 77, 77);
+
+    &:focus {
+        background-color: rgb(189, 63, 63);
+        color: white;
+    }
 }
