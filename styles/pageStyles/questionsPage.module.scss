@@ -122,10 +122,10 @@
 }
 
 .buttonNext {
-  background-color: $nextButtonBG !important;
+  background-color: $hoverColor !important;
 
     &:hover {
-    background-color: $hoverColor !important;
+    background-color: $focusColor !important;
   }
 }
 
