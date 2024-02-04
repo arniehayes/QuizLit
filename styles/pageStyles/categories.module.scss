@@ -89,6 +89,7 @@
 
 .greenSelected {
     background-color: rgb(55, 122, 55);
+    color: white;
     &:focus {
         background-color: rgb(55, 122, 55);
         color: white;
@@ -106,6 +107,7 @@
 
 .orangeSelected {
     background-color: rgb(172, 132, 59);
+    color: white;
     &:focus {
         background-color: rgb(172, 132, 59);
         color: white;
@@ -123,6 +125,7 @@
 
 .redSelected {
     background-color: rgb(156, 54, 54);
+    color: white;
     &:focus {
         background-color: rgb(156, 54, 54);
         color: white;
