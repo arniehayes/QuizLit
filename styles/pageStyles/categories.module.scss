@@ -85,42 +85,48 @@
 
 .green {
     background-color: rgb(85, 199, 85);
-    
+}
+
+.greenSelected {
     &:focus {
-        background-color: rgb(71, 156, 71);
+        background-color: rgb(55, 122, 55);
         color: white;
     }
 
     &:active {
-        background-color: rgb(71, 156, 71);
+        background-color: rgb(55, 122, 55);
         color: white;
     }
 }
 
 .orange {
     background-color: rgb(231, 174, 68);
+}
 
+.orangeSelected {
     &:focus {
-        background-color: rgb(192, 140, 42);
+        background-color: rgb(172, 132, 59);
         color: white;
     }
 
     &:active {
-        background-color: rgb(192, 140, 42);
+        background-color: rgb(172, 132, 59);
         color: white;
     }
 }
 
 .red {
     background-color: rgb(240, 77, 77);
+}
 
+.redSelected {
     &:focus {
-        background-color: rgb(189, 63, 63);
+        background-color: rgb(156, 54, 54);
         color: white;
     }
 
     &:active {
-        background-color: rgb(189, 63, 63);
+        background-color: rgb(156, 54, 54);
         color: white;
     }
 }

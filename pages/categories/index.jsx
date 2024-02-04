@@ -105,8 +105,8 @@ const Category = () => {
           <div className={style.categoryContainer}>
             <motion.button
               onClick={() => chooseDifficulty("easy")}
-              className={cc([style.anchor, style.button, {
-                [style.green]: chosen
+              className={cc([style.anchor, style.button, style.green, {
+                [style.greenSelected]: chosen === true
               }])}
               initial={{ opacity: 0, y: -5 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -117,8 +117,8 @@ const Category = () => {
             </motion.button>
             <motion.button
               onClick={() => chooseDifficulty("medium")}
-              className={cc([style.anchor, style.button, {
-                [style.orange]: chosen
+              className={cc([style.anchor, style.button, style.orange, {
+                [style.orangeSelected]: chosen === true
               }])}
               initial={{ opacity: 0, y: -5 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -129,8 +129,8 @@ const Category = () => {
             </motion.button>
             <motion.button
               onClick={() => chooseDifficulty("hard")}
-              className={cc([style.anchor, style.button, {
-                [style.red]: chosen
+              className={cc([style.anchor, style.button, style.red, {
+                [style.redSelected]: chosen === true
               }])}
               initial={{ opacity: 0, y: -5 }}
               whileInView={{ opacity: 1, y: 0 }}
