@@ -8,10 +8,15 @@ import SubmitButton from "../../components/SubmitButton";
 import NextQuestionButton from "../../components/NextQuestionButton";
 import { useRouter } from 'next/router'
 import Logo from "../../components/Logo";
+import DifficultyLevel from "../../components/DifficultyLevel.jsx"
 import { AddressContext } from "../_app.jsx";
 
 const Category = () => {
   const router = useRouter();
+
+  const {
+    difficulty
+  } = useContext(AddressContext);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [chosenAnswer, setChosenAnswer] = useState("");
@@ -24,9 +29,8 @@ const Category = () => {
 
   useEffect(() => {
     async function fetchData() {
-      console.log("difficulty:", difficulty);
       const newData = await fetch(
-        `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=${difficulty}` 
+        `https://the-trivia-api.com/api/questions?categories=${router.query.category}&limit=10&difficulty=${difficulty.toLowerCase()}` 
       ).then((res) => res.json());
       if (!newData.ok) {
         // If there is a server error, you might want to
@@ -68,16 +72,12 @@ const Category = () => {
     setSvgPathWrong("/");
   },[nextQuestion]);
 
-
-  const {
-    difficulty
-  } = useContext(AddressContext);
-
   return (
     <div className={style.pageContainer}>
       {currentQuestion < 10 ?
         <div className={style.contentContainer}>
           <Logo />
+          <DifficultyLevel diff={difficulty}/>
           <QuestionNumber currentQuestion={currentQuestion} />
           <CurrentQuestion questionArray={questionArray} currentQuestion={currentQuestion} />
           <CurrentAnswers questionArray={questionArray} currentQuestion={currentQuestion} setChosenAnswer={setChosenAnswer} srcCorrect={svgPathCorrect} srcWrong={svgPathWrong} submit={submit} />

@@ -1,0 +1,23 @@
+.difficultyContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+
+.text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.green {
+    color: rgb(85, 199, 85);
+}
+
+.orange {
+    color: rgb(231, 174, 68);
+}
+
+.red {
+    color: rgb(240, 77, 77);
+}

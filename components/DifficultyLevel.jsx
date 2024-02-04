@@ -1,14 +1,16 @@
 import React from 'react'
-import { AddressContext } from "../_app.jsx";
+import style from "../styles/componentStyles/difficultyLevel.module.scss"
+import cc from "classcat";
 
-const DifficultyLevel = () => {
-
-    const {
-        difficulty
-      } = useContext(AddressContext);
+const DifficultyLevel = ({diff}) => {
+  console.log(diff);
   return (
-    <div>
-        <span>Difficulty: {difficulty}</span>
+    <div className={style.difficultyContainer}>
+        <span className={cc([style.text, {
+          [style.green]: diff == "Easy",
+          [style.orange]: diff == "Medium",
+          [style.red]: diff == "Hard"
+        }])}>Difficulty: {diff}</span>
     </div>
   )
 }

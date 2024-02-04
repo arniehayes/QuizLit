@@ -66,14 +66,14 @@ const Category = () => {
   const [color, setColor] = useState();
 
   const chooseDifficulty = (diff) => {
-    if (diff == "easy") {
-      setDifficulty("easy");
+    if (diff == "Easy") {
+      setDifficulty("Easy");
       setChosen(true);
-    } else if (diff == "medium") {
-      setDifficulty("medium");
+    } else if (diff == "Medium") {
+      setDifficulty("Medium");
       setChosen(true);
-    } else if (diff == "hard") {
-      setDifficulty("hard");
+    } else if (diff == "Hard") {
+      setDifficulty("Hard");
       setChosen(true);
     }
   };
@@ -105,7 +105,7 @@ const Category = () => {
           </motion.h2>
           <div className={style.categoryContainer}>
             <motion.button
-              onClick={() => {chooseDifficulty("easy"), setColor("green")}}
+              onClick={() => {chooseDifficulty("Easy"), setColor("green")}}
               className={cc([style.anchor, style.button, style.green, {
                 [style.greenSelected]: chosen === true && color == "green"
               }])}
@@ -117,7 +117,7 @@ const Category = () => {
               Easy
             </motion.button>
             <motion.button
-              onClick={() => {chooseDifficulty("medium"), setColor("orange")}}
+              onClick={() => {chooseDifficulty("Medium"), setColor("orange")}}
               className={cc([style.anchor, style.button, style.orange, {
                 [style.orangeSelected]: chosen === true && color == "orange"
               }])}
@@ -129,7 +129,7 @@ const Category = () => {
               Medium
             </motion.button>
             <motion.button
-              onClick={() => {chooseDifficulty("hard"), setColor("red")}}
+              onClick={() => {chooseDifficulty("Hard"), setColor("red")}}
               className={cc([style.anchor, style.button, style.red, {
                 [style.redSelected]: chosen === true && color == "red"
               }])}
