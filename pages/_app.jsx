@@ -5,7 +5,7 @@ import React, { useState } from "react";
 export const AddressContext = React.createContext();
 
 function MyApp({ Component, pageProps }) {
-  const [difficulty, setDifficulty] = useState("");
+  const [difficulty, setDifficulty] = useState("medium");
     return (
       <>
         <Head>
