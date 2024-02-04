@@ -63,6 +63,7 @@ const Category = () => {
 
   const { difficulty, setDifficulty } = useContext(AddressContext);
   const [chosen, setChosen] = useState();
+  const [color, setColor] = useState();
 
   const chooseDifficulty = (diff) => {
     if (diff == "easy") {
@@ -104,9 +105,9 @@ const Category = () => {
           </motion.h2>
           <div className={style.categoryContainer}>
             <motion.button
-              onClick={() => chooseDifficulty("easy")}
+              onClick={() => {chooseDifficulty("easy"), setColor("green")}}
               className={cc([style.anchor, style.button, style.green, {
-                [style.greenSelected]: chosen === true
+                [style.greenSelected]: chosen === true && color == "green"
               }])}
               initial={{ opacity: 0, y: -5 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -116,9 +117,9 @@ const Category = () => {
               Easy
             </motion.button>
             <motion.button
-              onClick={() => chooseDifficulty("medium")}
+              onClick={() => {chooseDifficulty("medium"), setColor("orange")}}
               className={cc([style.anchor, style.button, style.orange, {
-                [style.orangeSelected]: chosen === true
+                [style.orangeSelected]: chosen === true && color == "orange"
               }])}
               initial={{ opacity: 0, y: -5 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -128,9 +129,9 @@ const Category = () => {
               Medium
             </motion.button>
             <motion.button
-              onClick={() => chooseDifficulty("hard")}
+              onClick={() => {chooseDifficulty("hard"), setColor("red")}}
               className={cc([style.anchor, style.button, style.red, {
-                [style.redSelected]: chosen === true
+                [style.redSelected]: chosen === true && color == "red"
               }])}
               initial={{ opacity: 0, y: -5 }}
               whileInView={{ opacity: 1, y: 0 }}
