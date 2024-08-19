@@ -6,6 +6,7 @@ export const AddressContext = React.createContext();
 
 function MyApp({ Component, pageProps }) {
   const [difficulty, setDifficulty] = useState("medium");
+  const [categoryType, setCategoryType] = useState("");
     return (
       <>
         <Head>
@@ -26,7 +27,7 @@ function MyApp({ Component, pageProps }) {
           <link rel="shortcut icon" href="/brain_32x.png" />
         </Head>
         <AddressContext.Provider 
-          value={{difficulty, setDifficulty}}
+          value={{difficulty, setDifficulty, categoryType, setCategoryType}}
         >
           <Component {...pageProps} />
         </AddressContext.Provider>

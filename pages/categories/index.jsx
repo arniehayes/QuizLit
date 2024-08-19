@@ -61,7 +61,7 @@ const Category = () => {
     },
   ];
 
-  const { difficulty, setDifficulty } = useContext(AddressContext);
+  const { difficulty, setDifficulty, categoryType, setCategoryType } = useContext(AddressContext);
   const [chosen, setChosen] = useState();
   const [color, setColor] = useState();
 
@@ -77,6 +77,11 @@ const Category = () => {
       setChosen(true);
     }
   };
+
+  const categoryTypeReturn = (type) => {
+    setCategoryType(type)
+    console.log("category" , categoryType)
+  }
 
   return (
     <div className={style.pageContainer}>
@@ -146,6 +151,7 @@ const Category = () => {
           {categoryList.map((category) => (
             <Link key={category.link} href={`/categories/${category.link}`}>
               <motion.a
+                onClick={() => {categoryTypeReturn(category.label)}}
                 className={style.anchor}
                 id={category.link}
                 initial={{ opacity: 0, y: -5 }}

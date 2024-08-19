@@ -10,12 +10,14 @@ import { useRouter } from 'next/router'
 import Logo from "../../components/Logo";
 import DifficultyLevel from "../../components/DifficultyLevel.jsx"
 import { AddressContext } from "../_app.jsx";
+import CategoryType from "../../components/CategoryType.jsx";
 
 const Category = () => {
   const router = useRouter();
 
   const {
-    difficulty
+    difficulty,
+    categoryType
   } = useContext(AddressContext);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -77,6 +79,7 @@ const Category = () => {
       {currentQuestion < 10 ?
         <div className={style.contentContainer}>
           <Logo />
+          <CategoryType category={categoryType}/>
           <DifficultyLevel diff={difficulty}/>
           <QuestionNumber currentQuestion={currentQuestion} />
           <CurrentQuestion questionArray={questionArray} currentQuestion={currentQuestion} />
